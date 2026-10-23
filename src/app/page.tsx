@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { ContractConfigBanner } from "@/components/ContractConfigBanner";
 import { SaveNumberCard } from "@/components/SaveNumberCard";
 import { LookupWalletCard } from "@/components/LookupWalletCard";
-import { getDefaultContractAddress } from "@/config/contract";
+import { LUCKY_NUMBER_CONTRACT_ADDRESS } from "@/config/contract";
 import { botchainMainnet } from "@/config/network";
 import {
   Sparkles,
@@ -19,25 +19,18 @@ import {
 import { BotChainLogo } from "@/components/BotChainLogo";
 
 export default function Home() {
-  const [contractAddress, setContractAddress] = useState<string>(() => getDefaultContractAddress());
+  const contractAddress = LUCKY_NUMBER_CONTRACT_ADDRESS;
 
   useEffect(() => {
-    const defaultAddr = getDefaultContractAddress();
-    const saved = localStorage.getItem("lucky_number_contract_address");
-
-    // Enforce active Botchain Mainnet contract address, clearing any previous cache
-    if (!saved || saved.toLowerCase() !== defaultAddr.toLowerCase()) {
-      localStorage.setItem("lucky_number_contract_address", defaultAddr);
-      setContractAddress(defaultAddr);
-    } else {
-      setContractAddress(saved);
+    // Completely wipe any stale testnet contract address cached in browser
+    try {
+      localStorage.removeItem("lucky_number_contract_address");
+      localStorage.removeItem("contract_address");
+      localStorage.removeItem("contractAddress");
+    } catch {
+      // Ignore if localStorage is disabled
     }
   }, []);
-
-  const handleUpdateAddress = (newAddress: string) => {
-    setContractAddress(newAddress);
-    localStorage.setItem("lucky_number_contract_address", newAddress);
-  };
 
   return (
     <div className="min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
@@ -94,11 +87,8 @@ export default function Home() {
             </p>
           </section>
 
-          {/* Contract Configuration / Active Address Banner */}
-          <ContractConfigBanner
-            contractAddress={contractAddress}
-            onUpdateAddress={handleUpdateAddress}
-          />
+          {/* Contract Mainnet Verified Address Banner */}
+          <ContractConfigBanner />
 
           {/* Main 2-Column Responsive Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">

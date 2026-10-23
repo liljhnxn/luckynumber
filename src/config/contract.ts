@@ -84,19 +84,11 @@ export const LUCKY_NUMBER_ABI = [
   },
 ] as const;
 
+export const LUCKY_NUMBER_CONTRACT_ADDRESS: `0x${string}` = "0x27Cdd24BEa9983E50fAfCF943F992b7785731f36";
+
 /**
- * Returns the configured contract address from environment variable or deployment output.
+ * Returns the permanently verified LuckyNumber contract address on Botchain Mainnet.
  */
-export function getDefaultContractAddress(): `0x${string}` | "" {
-  const envAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS?.trim();
-  if (envAddress && envAddress.startsWith("0x") && envAddress.length === 42) {
-    return envAddress as `0x${string}`;
-  }
-
-  const deployedAddress = deployedData.contractAddress?.trim();
-  if (deployedAddress && deployedAddress.startsWith("0x") && deployedAddress.length === 42) {
-    return deployedAddress as `0x${string}`;
-  }
-
-  return "0x27Cdd24BEa9983E50fAfCF943F992b7785731f36";
+export function getDefaultContractAddress(): `0x${string}` {
+  return LUCKY_NUMBER_CONTRACT_ADDRESS;
 }

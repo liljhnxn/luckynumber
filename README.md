@@ -31,7 +31,7 @@ The project adheres to strict architectural simplicity: **one Solidity smart con
   - Large glowing preview badge showcasing the chosen number.
   - Emits on-chain `NumberUpdated` event.
   - Displays transaction status (signing, confirming, confirmed, or rejected).
-  - Displays explorer links with the confirmed transaction hash on BohrScan.
+  - Displays explorer links with the confirmed transaction hash on BotchainScan.
   - Users can update their number at any time.
 - **Look Up Any Wallet**:
   - Validates Ethereum/Botchain format (42-character hex).
