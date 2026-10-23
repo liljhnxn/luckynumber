@@ -26,19 +26,42 @@ async function main() {
     console.warn("⚠️ Warning: Deployer account has 0 BOT balance. Deployment might fail if network requires gas fees.");
   }
 
+  const providerNetwork = await hre.ethers.provider.getNetwork();
+  const chainId = Number(providerNetwork.chainId);
+  const explorerUrl = "https://scan.botchain.ai";
+
   console.log("Submitting deployment transaction...");
   const LuckyNumberFactory = await hre.ethers.getContractFactory("LuckyNumber");
-  const luckyNumber = await LuckyNumberFactory.deploy();
+  
+  // Deploy with current standard gas price without overpaying
+  const feeData = await hre.ethers.provider.getFeeData();
+  const gasPrice = feeData.gasPrice || 20000000000n;
+  console.log(`Gas Price: ${hre.ethers.formatUnits(gasPrice, "gwei")} gwei`);
+
+  const luckyNumber = await LuckyNumberFactory.deploy({
+    gasPrice: gasPrice,
+  });
 
   await luckyNumber.waitForDeployment();
   const contractAddress = await luckyNumber.getAddress();
-  const txHash = luckyNumber.deploymentTransaction()?.hash;
+  const deployTx = luckyNumber.deploymentTransaction();
+  const txHash = deployTx?.hash;
+
+  if (deployTx) {
+    const receipt = await deployTx.wait();
+    if (receipt) {
+      const gasUsed = receipt.gasUsed;
+      const totalCost = gasUsed * (receipt.gasPrice || gasPrice);
+      console.log(`Gas Used: ${gasUsed.toString()} units`);
+      console.log(`Actual Gas Fee: ${hre.ethers.formatEther(totalCost)} BOT`);
+    }
+  }
 
   console.log(`🎉 LuckyNumber deployed successfully!`);
   console.log(`Contract Address: ${contractAddress}`);
   if (txHash) {
     console.log(`Transaction Hash: ${txHash}`);
-    console.log(`Explorer Link:    https://scan.bohr.life/tx/${txHash}`);
+    console.log(`Explorer Link:    ${explorerUrl}/tx/${txHash}`);
   }
 
   // Update frontend config file
@@ -50,7 +73,7 @@ async function main() {
   const deploymentData = {
     contractAddress,
     network,
-    chainId: 968,
+    chainId,
     deployedAt: new Date().toISOString(),
     txHash: txHash || null,
   };

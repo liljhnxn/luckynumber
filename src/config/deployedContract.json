@@ -1,7 +1,8 @@
 {
-  "contractAddress": "0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e",
-  "network": "botchainTestnet",
-  "chainId": 968,
-  "deployedAt": "2026-10-10T13:55:05.417Z",
-  "txHash": "0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad"
+  "contractAddress": "0x27Cdd24BEa9983E50fAfCF943F992b7785731f36",
+  "network": "botchainMainnet",
+  "chainId": 677,
+  "deployedAt": "2026-10-23T22:49:39.911Z",
+  "txHash": "0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74",
+  "gasUsed": "0.00314386"
 }

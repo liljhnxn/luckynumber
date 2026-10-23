@@ -1,27 +1,30 @@
-# 🍀 LuckyNumber — Web3 dApp on Botchain Testnet
+# 🍀 LuckyNumber — Web3 dApp on Botchain Mainnet
 
-LuckyNumber is a minimalist, elegant Web3 decentralized application (dApp) built on **Botchain Testnet**. It enables users to connect their Web3 wallet, choose their favourite lucky number (between 1 and 100 inclusive), and permanently save it on the blockchain. Anyone can enter any wallet address to discover that wallet's chosen lucky number.
+LuckyNumber is a minimalist, elegant Web3 decentralized application (dApp) built on **Botchain Mainnet**. It enables users to connect their Web3 wallet, choose their favourite lucky number (between 1 and 100 inclusive), and permanently save it on the blockchain. Anyone can enter any wallet address to discover that wallet's chosen lucky number.
 
 The project adheres to strict architectural simplicity: **one Solidity smart contract, one responsive webpage, zero backends, and zero centralized databases**.
 
 ---
 
-## 🚀 Live Blockchain Network Details
+## 🚀 Live Blockchain Network Details (Botchain Mainnet)
 
-- **Network Name**: Botchain Testnet
-- **Chain ID**: `968`
-- **RPC URL**: `https://rpc.bohr.life`
-- **Block Explorer**: [https://scan.bohr.life](https://scan.bohr.life)
+- **Network Name**: BOT Chain (Mainnet)
+- **Chain ID**: `677`
+- **BOT Chain Website**: [https://botchain.ai](https://botchain.ai)
+- **BOT Chain Explorer**: [https://scan.botchain.ai](https://scan.botchain.ai)
+- **RPC URL**: `https://rpc.botchain.ai`
 - **Native Currency**: `BOT` (18 decimals)
-- **Deployed Contract Address**: [`0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e`](https://scan.bohr.life/address/0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e#code) (Verified on BohrScan)
-- **Deployment Transaction**: [`0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad`](https://scan.bohr.life/tx/0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad)
+- **Total Supply**: `150 Million BOT`
+- **Deployed Contract Address**: [`0x27Cdd24BEa9983E50fAfCF943F992b7785731f36`](https://scan.botchain.ai/address/0x27Cdd24BEa9983E50fAfCF943F992b7785731f36)
+- **Deployment Transaction**: [`0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74`](https://scan.botchain.ai/tx/0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74)
+- **Gas Fee Consumed**: `0.00314386 BOT` (Economical & minimal)
 
 ---
 
 ## ✨ Features
 
 - **Wallet Connection**: Connect with MetaMask, Rabby, OKX, Coinbase Wallet, or any standard injected Web3 wallet.
-- **Network Verification & Switching**: Detects network connectivity and prompts a 1-click switch to Botchain Testnet (Chain ID 968) if connected to another network.
+- **Network Verification & Switching**: Detects network connectivity and prompts a 1-click switch to Botchain Mainnet (Chain ID 677) if connected to another network.
 - **Save & Update Lucky Number**:
   - Number input restricted strictly to values between `1` and `100`.
   - Interactive slider, increment/decrement stepper, and quick-pick presets.
@@ -56,7 +59,7 @@ The project adheres to strict architectural simplicity: **one Solidity smart con
 ├── contracts/
 │   └── LuckyNumber.sol          # Solidity smart contract
 ├── scripts/
-│   └── deploy.js                # Hardhat deployment script for Botchain Testnet
+│   └── deploy.js                # Deployment script for Botchain Mainnet
 ├── test/
 │   └── LuckyNumber.test.js      # Hardhat unit tests
 ├── src/
@@ -68,12 +71,12 @@ The project adheres to strict architectural simplicity: **one Solidity smart con
 │   │   ├── Navbar.tsx           # Header, logo, network badge & wallet button
 │   │   ├── SaveNumberCard.tsx   # Visual selector, preview, contract writer
 │   │   ├── LookupWalletCard.tsx # Address search & on-chain reader
-│   │   ├── ContractConfigBanner.tsx # Contract address manager & BohrScan link
+│   │   ├── ContractConfigBanner.tsx # Contract address manager & BotchainScan link
 │   │   └── Providers.tsx        # Wagmi & React Query client providers
 │   └── config/
 │       ├── contract.ts          # Contract ABI, types, and address resolution
 │       ├── deployedContract.json# Auto-populated deployment output
-│       ├── network.ts           # Botchain Testnet chain definition
+│       ├── network.ts           # Botchain Mainnet chain definition
 │       └── wagmi.ts             # Wagmi client configuration
 ├── hardhat.config.js            # Hardhat network & compiler configuration
 ├── .env.example                 # Template for environment variables
@@ -134,19 +137,19 @@ Edit `.env` and set your deployer wallet private key:
 
 ```env
 PRIVATE_KEY=your_private_key_without_quotes
-BOTCHAIN_RPC_URL=https://rpc.bohr.life
+BOTCHAIN_RPC_URL=https://rpc.botchain.ai
 ```
 
 > **Security Note:** Never commit your `.env` file or private key to Git. `.env` is included in `.gitignore`.
 
 ### 2. Fund Your Deployer Wallet
-Ensure your deployer address has testnet `BOT` tokens for gas fees on Botchain Testnet.
+Ensure your deployer address has `BOT` tokens for gas fees on Botchain Mainnet.
 
-### 3. Deploy to Botchain Testnet
+### 3. Deploy to Botchain Mainnet
 Run the deployment script:
 
 ```bash
-npm run deploy:testnet
+npm run deploy:mainnet
 ```
 
 Upon successful deployment, the script:
@@ -159,7 +162,7 @@ Upon successful deployment, the script:
 
 You can configure the active contract address in any of three ways:
 
-1. **Automatic Deployment Output**: After running `npm run deploy:testnet`, `src/config/deployedContract.json` is updated automatically.
+1. **Automatic Deployment Output**: After running `npm run deploy:mainnet`, `src/config/deployedContract.json` is updated automatically.
 2. **Environment Variable**: Set `NEXT_PUBLIC_CONTRACT_ADDRESS=0x...` in `.env.local` or `.env`.
 3. **In-DApp UI Configuration**: When you load the dApp, if no contract address is set or if you wish to test with an address on-the-fly, click **"Enter Contract Address"** or **"Change"** in the top banner and paste the address. The dApp will save it to your browser's local storage.
 
@@ -239,4 +242,4 @@ contract LuckyNumber {
 ---
 
 ## 📜 License
-MIT License. Built for Botchain Testnet.
+MIT License. Built for Botchain Mainnet.

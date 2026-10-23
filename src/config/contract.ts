@@ -98,5 +98,5 @@ export function getDefaultContractAddress(): `0x${string}` | "" {
     return deployedAddress as `0x${string}`;
   }
 
-  return "";
+  return "0x27Cdd24BEa9983E50fAfCF943F992b7785731f36";
 }

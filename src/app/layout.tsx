@@ -4,7 +4,7 @@ import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "LuckyNumber | Save Your Favourite Number On-Chain",
-  description: "Connect your wallet, pick your lucky number (1-100), and store it forever on Botchain Testnet.",
+  description: "Connect your wallet, pick your lucky number (1-100), and store it forever on Botchain Mainnet.",
   keywords: ["Web3", "LuckyNumber", "Botchain", "Ethereum", "dApp", "Solidity"],
   icons: {
     icon: "/favicon.svg",

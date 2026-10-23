@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useAccount, useConnect, useDisconnect, useChainId, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/config/network";
-import { Sparkles, Wallet, Check, Copy, LogOut, AlertCircle, RefreshCw } from "lucide-react";
+import { botchainMainnet } from "@/config/network";
+import { Sparkles, Wallet, Check, Copy, LogOut, AlertCircle, RefreshCw, ExternalLink } from "lucide-react";
+import { BotChainLogo } from "./BotChainLogo";
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
@@ -19,7 +20,7 @@ export function Navbar() {
     setMounted(true);
   }, []);
 
-  const isWrongNetwork = isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chainId !== botchainMainnet.id;
 
   const copyAddress = () => {
     if (address) {
@@ -64,7 +65,34 @@ export function Navbar() {
         </div>
 
         {/* Network & Wallet Controls */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2.5">
+          {/* BOT Chain Website link */}
+          <a
+            id="nav-botchain-website-link"
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-300 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 transition-all group"
+            title="Visit BOT Chain Website"
+          >
+            <BotChainLogo className="w-3.5 h-3.5" size={14} />
+            <span className="group-hover:text-cyan-300 transition-colors">BOT Chain</span>
+            <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+          </a>
+
+          {/* BOT Chain Explorer link */}
+          <a
+            id="nav-explorer-link"
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-medium text-slate-300 bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 transition-all group"
+            title="Open BOT Chain Explorer"
+          >
+            <span>Explorer</span>
+            <ExternalLink className="w-3 h-3 text-cyan-400 group-hover:rotate-45 transition-transform" />
+          </a>
+
           {!mounted ? (
             <button
               id="connect-wallet-btn"
@@ -82,18 +110,18 @@ export function Navbar() {
                   {isWrongNetwork ? (
                     <button
                       id="switch-network-btn"
-                      onClick={() => switchChain({ chainId: botchainTestnet.id })}
+                      onClick={() => switchChain({ chainId: botchainMainnet.id })}
                       disabled={isSwitching}
                       className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20 transition-all cursor-pointer"
-                      title="Switch to Botchain Testnet"
+                      title="Switch to Botchain Mainnet"
                     >
                       <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-                      <span>{isSwitching ? "Switching..." : "Switch to Botchain"}</span>
+                      <span>{isSwitching ? "Switching..." : "Switch to Botchain Mainnet"}</span>
                     </button>
                   ) : (
                     <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Botchain (968)</span>
+                      <span>Botchain Mainnet (677)</span>
                     </div>
                   )}
                 </div>

@@ -1,9 +1,12 @@
 # 🍀 LuckyNumber: Whitepaper & Pitch Deck
 
-> **Decentralized On-Chain Personal Identity & Lucky Number Protocol on Botchain Testnet**  
-> *Contract Address*: `0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e` (Botchain Testnet, Chain ID: 968)  
-> *Explorer Link*: [https://scan.bohr.life/address/0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e#code](https://scan.bohr.life/address/0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e#code)  
-> *Deployment Tx*: [`0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad`](https://scan.bohr.life/tx/0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad)  
+> **Decentralized On-Chain Personal Identity & Lucky Number Protocol on Botchain Mainnet**  
+> *Contract Address*: `0x27Cdd24BEa9983E50fAfCF943F992b7785731f36` (Botchain Mainnet, Chain ID: 677)  
+> *BOT Chain Website*: [https://botchain.ai](https://botchain.ai)  
+> *BOT Chain Explorer*: [https://scan.botchain.ai](https://scan.botchain.ai)  
+> *Explorer Link*: [https://scan.botchain.ai/address/0x27Cdd24BEa9983E50fAfCF943F992b7785731f36](https://scan.botchain.ai/address/0x27Cdd24BEa9983E50fAfCF943F992b7785731f36)  
+> *Deployment Tx*: [`0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74`](https://scan.botchain.ai/tx/0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74)  
+> *Gas Fee*: `0.00314386 BOT`  
 > *Repository*: [https://github.com/liljhnxn/luckynumber](https://github.com/liljhnxn/luckynumber)  
 
 ---
@@ -14,7 +17,7 @@
 * **Title**: **LuckyNumber**
 * **Tagline**: Anchor Your Number. Claim Your Digital Identity.
 * **Mission**: Providing a lightweight, composable, and 100% decentralized identity primitive where Web3 users select, verify, and broadcast their signature lucky number directly on Botchain.
-* **Network**: Built natively for **Botchain Testnet** (High-performance, EVM-compatible decentralized architecture).
+* **Network**: Built natively for **Botchain Mainnet** (High-performance, EVM-compatible decentralized architecture).
 
 ---
 
@@ -34,9 +37,9 @@
 ---
 
 ### Slide 4: User Journey & Product Features
-1. **Connect**: Seamless Web3 onboarding (MetaMask, Rabby, OKX, Coinbase Wallet, etc.) with automated network switching to Botchain (Chain ID `968`).
+1. **Connect**: Seamless Web3 onboarding (MetaMask, Rabby, OKX, Coinbase Wallet, etc.) with automated network switching to Botchain Mainnet (Chain ID `677`).
 2. **Select & Preview**: Interactive slider, increment/decrement stepper, and quick-pick presets (e.g., 7, 13, 21, 77, 99) with real-time glowing badge preview.
-3. **Store On-Chain**: Send a 1-click transaction to `setNumber(n)`; track transaction lifecycle from signing to BohrScan confirmation.
+3. **Store On-Chain**: Send a 1-click transaction to `setNumber(n)`; track transaction lifecycle from signing to BotchainScan confirmation.
 4. **Public Query & Discovery**: Enter any wallet address or click the 1-click "Query Connected" shortcut to inspect saved lucky numbers.
 
 ---
@@ -52,7 +55,7 @@
 * **Contract**: Solidity `^0.8.20`, Hardhat test suite with 100% test coverage.
 * **Frontend**: Next.js 16 (App Router), TypeScript, Tailwind CSS with custom dark navy glassmorphic aesthetic (`#070a13`).
 * **Web3 Integration**: Wagmi v2 + Viem + TanStack React Query for reactive contract reads and optimistic state updates.
-* **Network Anchor**: Botchain Testnet (Chain ID `968`), RPC `https://rpc.bohr.life`.
+* **Network Anchor**: Botchain Mainnet (Chain ID `677`), RPC `https://rpc.botchain.ai`.
 
 ---
 
@@ -68,19 +71,19 @@
 ---
 
 ### Slide 8: Roadmap & Ecosystem Expansion
-* **Phase 1 (Completed)**: Core smart contract deployment, BohrScan verification, responsive Next.js 16 dApp, and 100% unit test coverage.
-* **Phase 2 (Current)**: Community onboarding on Botchain Testnet, public search indexing, and real-time event notifications.
-* **Phase 3 (Next)**:
+* **Phase 1 (Completed)**: Core smart contract development, test suite, and responsive Next.js 16 dApp.
+* **Phase 2 (Completed)**: Ultra-low gas deployment and live launch on Botchain Mainnet (Chain ID 677).
+* **Phase 3 (Active)**: Community onboarding on Botchain Mainnet, public search indexing, and ecosystem integration.
+* **Phase 4 (Next)**:
   * **Lucky Number Duels & Mini-Games**: On-chain provably fair lottery/dice duels based on stored lucky numbers.
   * **Botchain Ecosystem SDK**: NPM package allowing third-party Botchain games to query `LuckyNumber` in 1 line of code.
-  * **Mainnet Rollout**: Gas-optimized deployment on Botchain Mainnet.
 
 ---
 
 # PART 2: 📄 TECHNICAL WHITEPAPER
 
 ## 1. Abstract
-LuckyNumber is a decentralized, immutable identity attribute protocol deployed on the Botchain Testnet. By mapping cryptographic wallet addresses directly to a bounded integer domain ($n \in [1, 100]$), LuckyNumber provides a tamper-proof social primitive for EVM environments. Built without external dependencies or centralized backend servers, the protocol exposes constant-time $O(1)$ read/write endpoints, strict mathematical invariant assertions, and real-time EVM event emission, serving as a composable building block for on-chain games, lotteries, and decentralized community mechanics.
+LuckyNumber is a decentralized, immutable identity attribute protocol deployed on the Botchain Mainnet. By mapping cryptographic wallet addresses directly to a bounded integer domain ($n \in [1, 100]$), LuckyNumber provides a tamper-proof social primitive for EVM environments. Built without external dependencies or centralized backend servers, the protocol exposes constant-time $O(1)$ read/write endpoints, strict mathematical invariant assertions, and real-time EVM event emission, serving as a composable building block for on-chain games, lotteries, and decentralized community mechanics.
 
 ---
 
@@ -107,11 +110,11 @@ LuckyNumber solves this by implementing an ultra-lean, single-contract protocol 
                | (EIP-1193 JSON-RPC)                  | (JSON-RPC)
                v                                      v
 +-----------------------------------------------------------------------+
-|                    BOTCHAIN TESTNET (CHAIN ID: 968)                   |
-|                        RPC: https://rpc.bohr.life                     |
+|                    BOTCHAIN MAINNET (CHAIN ID: 677)                   |
+|                        RPC: https://rpc.botchain.ai                   |
 |                                                                       |
 |   +---------------------------------------------------------------+   |
-|   |         LuckyNumber Smart Contract (0x3AdD...076e)            |   |
+|   |         LuckyNumber Smart Contract (0x27Cd...1f36)            |   |
 |   |                                                               |   |
 |   |   State Variables:                                            |   |
 |   |     mapping(address => uint256) private _numbers              |   |
@@ -171,22 +174,22 @@ The frontend is built using **Next.js 16 (App Router)** and **TypeScript**:
 
 1. **State Hydration**: Uses `@tanstack/react-query` combined with `wagmi` hooks (`useReadContract`, `useWriteContract`, `useWaitForTransactionReceipt`) to achieve instantaneous client-side updates.
 2. **Zero-Wallet Public Lookups**: Contract read methods (`getNumber`, `hasNumber`) execute through public RPC calls via Viem, allowing unauthenticated visitors to query any wallet address instantly.
-3. **Graceful Network Handling**: Enforces execution exclusively on Botchain Testnet (`ChainId: 968`), displaying a reactive network banner with 1-click network addition and switching capabilities.
+3. **Graceful Network Handling**: Enforces execution exclusively on Botchain Mainnet (`ChainId: 677`), displaying a reactive network banner with 1-click network addition and switching capabilities.
 4. **Design System**: Built with modern CSS and Tailwind CSS using a curated dark navy background (`#070a13`), electric indigo accents (`#6366f1`), glowing glassmorphic cards, and micro-animations for an engaging user experience.
 
 ---
 
 ## 6. Live Deployment & Verification
 
-* **Network**: Botchain Testnet
-* **Chain ID**: `968`
-* **RPC Endpoint**: `https://rpc.bohr.life`
-* **Currency Symbol**: `BOT`
-* **Contract Address**: [`0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e`](https://scan.bohr.life/address/0x3AdD26Fa7A69e01d94cA4c5473a8DfEC1A84076e#code)
-* **Contract Verification**: Bytecode and ABI verified directly on BohrScan.
-* **Deployment Transaction**: [`0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad`](https://scan.bohr.life/tx/0x6e790cc87d0000db89a44da37af923363ef72fadb78a520a6978b8a83e2260ad)
+* **Network**: Botchain Mainnet
+* **Chain ID**: `677`
+* **RPC Endpoint**: `https://rpc.botchain.ai`
+* **Currency Symbol**: `BOT` (Total Supply: 150 Million BOT)
+* **Contract Address**: [`0x27Cdd24BEa9983E50fAfCF943F992b7785731f36`](https://scan.botchain.ai/address/0x27Cdd24BEa9983E50fAfCF943F992b7785731f36)
+* **Deployment Transaction**: [`0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74`](https://scan.botchain.ai/tx/0x06e009cf1a0564058dbd93fe117916d4e6a13e45d9d46443fbfad3f3e16ffb74)
+* **Gas Consumed**: `0.00314386 BOT` (157,193 gas units @ 20 gwei)
 
 ---
 
 ## 7. Conclusion
-LuckyNumber demonstrates that on-chain identity primitives can be elegant, gas-efficient, and mathematically robust. By removing all centralized backend points of failure and providing transparent, verified contracts on Botchain Testnet, LuckyNumber offers a delightful and reliable social primitive for the expanding Botchain ecosystem.
+LuckyNumber demonstrates that on-chain identity primitives can be elegant, gas-efficient, and mathematically robust. By removing all centralized backend points of failure and providing transparent contracts on Botchain Mainnet, LuckyNumber offers a delightful and reliable social primitive for the expanding Botchain ecosystem.

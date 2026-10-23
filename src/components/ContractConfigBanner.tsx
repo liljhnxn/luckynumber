@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { isAddress } from "viem";
-import { botchainTestnet } from "@/config/network";
+import { botchainMainnet } from "@/config/network";
 import { ExternalLink, Edit2, Check, AlertTriangle, ShieldCheck } from "lucide-react";
+import { BotChainLogo } from "./BotChainLogo";
 
 interface ContractConfigBannerProps {
   contractAddress: string;
@@ -49,9 +50,9 @@ export function ContractConfigBanner({
                   Smart Contract Not Configured
                 </h2>
                 <p className="text-xs text-amber-300/80 mt-1 max-w-xl leading-relaxed">
-                  To interact on Botchain Testnet, deploy the contract using{" "}
+                  To interact on Botchain Mainnet, deploy the contract using{" "}
                   <code className="bg-black/40 px-1.5 py-0.5 rounded text-amber-200 font-mono">
-                    npm run deploy:testnet
+                    npm run deploy:mainnet
                   </code>{" "}
                   or paste an already deployed contract address below.
                 </p>
@@ -115,13 +116,15 @@ export function ContractConfigBanner({
             </span>
             <a
               id="explorer-contract-link"
-              href={`${botchainTestnet.blockExplorers.default.url}/address/${contractAddress}`}
+              href={`${botchainMainnet.blockExplorers.default.url}/address/${contractAddress}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center p-1"
-              title="View on BohrScan block explorer"
+              className="text-slate-400 hover:text-cyan-300 transition-colors inline-flex items-center space-x-1.5 px-2 py-0.5 rounded-lg bg-slate-850 hover:bg-slate-800 border border-slate-750"
+              title="View on BotchainScan block explorer"
             >
-              <ExternalLink className="w-3.5 h-3.5" />
+              <BotChainLogo className="w-3.5 h-3.5 rounded-sm" size={14} />
+              <span className="text-[11px] text-cyan-400 font-medium">BotchainScan</span>
+              <ExternalLink className="w-3 h-3 text-cyan-400" />
             </a>
           </div>
 

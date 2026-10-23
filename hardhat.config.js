@@ -16,23 +16,24 @@ export default {
     hardhat: {
       chainId: 31337,
     },
-    botchainTestnet: {
-      url: process.env.BOTCHAIN_RPC_URL || "https://rpc.bohr.life",
-      chainId: 968,
+    botchainMainnet: {
+      url: process.env.BOTCHAIN_RPC_URL || "https://rpc.botchain.ai",
+      chainId: 677,
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 20000000000,
     },
   },
   etherscan: {
     apiKey: {
-      botchainTestnet: process.env.ETHERSCAN_API_KEY || "empty",
+      botchainMainnet: process.env.ETHERSCAN_API_KEY || "empty",
     },
     customChains: [
       {
-        network: "botchainTestnet",
-        chainId: 968,
+        network: "botchainMainnet",
+        chainId: 677,
         urls: {
-          apiURL: "https://scan.bohr.life/api",
-          browserURL: "https://scan.bohr.life",
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
         },
       },
     ],

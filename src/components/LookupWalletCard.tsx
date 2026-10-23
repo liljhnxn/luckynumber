@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { isAddress } from "viem";
 import { useAccount, usePublicClient } from "wagmi";
 import { LUCKY_NUMBER_ABI } from "@/config/contract";
-import { Search, Wallet, AlertCircle, Loader2, UserCheck, HelpCircle } from "lucide-react";
+import { Search, Wallet, AlertCircle, Loader2, UserCheck, HelpCircle, ExternalLink } from "lucide-react";
+import { BotChainLogo } from "./BotChainLogo";
 
 interface LookupWalletCardProps {
   contractAddress: string;
@@ -219,9 +220,23 @@ export function LookupWalletCard({ contractAddress }: LookupWalletCardProps) {
                   <p className="text-xs text-slate-400 font-mono break-all px-2">
                     {result.address}
                   </p>
-                  <span className="inline-block mt-2 text-[11px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
-                    Stored on Botchain Testnet
-                  </span>
+                  <div className="flex flex-wrap items-center justify-center gap-2 mt-2">
+                    <span className="text-[11px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
+                      Stored on Botchain Mainnet
+                    </span>
+                    <a
+                      id="lookup-explorer-link"
+                      href={`https://scan.botchain.ai/address/${result.address}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[11px] font-medium text-cyan-400 hover:text-cyan-300 underline"
+                      title="View wallet on BotchainScan"
+                    >
+                      <BotChainLogo className="w-3.5 h-3.5 rounded-sm" size={14} />
+                      <span>View on BotchainScan</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
                 </div>
               </div>
             ) : (

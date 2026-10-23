@@ -10,7 +10,7 @@ import {
 } from "wagmi";
 import { isAddress } from "viem";
 import { LUCKY_NUMBER_ABI } from "@/config/contract";
-import { botchainTestnet } from "@/config/network";
+import { botchainMainnet } from "@/config/network";
 import {
   Sparkles,
   CheckCircle2,
@@ -21,6 +21,7 @@ import {
   Minus,
   RotateCcw,
 } from "lucide-react";
+import { BotChainLogo } from "./BotChainLogo";
 
 interface SaveNumberCardProps {
   contractAddress: string;
@@ -42,7 +43,7 @@ export function SaveNumberCard({ contractAddress }: SaveNumberCardProps) {
   }, []);
 
   const isValidContract = Boolean(contractAddress && isAddress(contractAddress));
-  const isCorrectNetwork = chainId === botchainTestnet.id;
+  const isCorrectNetwork = chainId === botchainMainnet.id;
 
   // Read current saved number for the connected wallet
   const {
@@ -118,7 +119,7 @@ export function SaveNumberCard({ contractAddress }: SaveNumberCardProps) {
       return;
     }
     if (!isCorrectNetwork) {
-      setErrorMessage("Please switch your wallet network to Botchain Testnet (Chain ID 968).");
+      setErrorMessage("Please switch your wallet network to Botchain Mainnet (Chain ID 677).");
       return;
     }
 
@@ -341,7 +342,7 @@ export function SaveNumberCard({ contractAddress }: SaveNumberCardProps) {
               <span>Successfully saved number #{lastSavedNumber}!</span>
             </div>
             <p className="text-xs text-slate-300">
-              Your lucky number is permanently stored on Botchain Testnet. You can change it anytime.
+              Your lucky number is permanently stored on Botchain Mainnet. You can change it anytime.
             </p>
             <div className="flex items-center justify-between pt-2 border-t border-emerald-500/20 text-xs">
               <span className="text-slate-400 font-mono">
@@ -349,12 +350,13 @@ export function SaveNumberCard({ contractAddress }: SaveNumberCardProps) {
               </span>
               <a
                 id="tx-explorer-link"
-                href={`${botchainTestnet.blockExplorers.default.url}/tx/${txHash}`}
+                href={`${botchainMainnet.blockExplorers.default.url}/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 text-cyan-400 hover:text-cyan-300 underline font-medium"
+                className="inline-flex items-center space-x-1.5 text-cyan-400 hover:text-cyan-300 underline font-medium"
               >
-                <span>View on BohrScan</span>
+                <BotChainLogo className="w-3.5 h-3.5 rounded-sm" size={14} />
+                <span>View on BotchainScan</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -403,7 +405,7 @@ export function SaveNumberCard({ contractAddress }: SaveNumberCardProps) {
             ? "Connect your Web3 wallet to record your number on-chain."
             : !isValidContract
             ? "Contract address needs to be configured above to submit."
-            : "Transactions are executed on Botchain Testnet (Chain ID 968)."}
+            : "Transactions are executed on Botchain Mainnet (Chain ID 677)."}
         </p>
       </div>
     </div>
